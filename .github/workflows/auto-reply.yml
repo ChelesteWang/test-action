@@ -19,14 +19,20 @@ jobs:
         if: ${{ github.event.label.name == 'need demo' }}
         uses: peter-evans/create-or-update-comment@v3
         with:
-          body-path: "need_demo.md"
+          body: |
+            ## please provide a demo as soon as possible / 请尽快提供一个可复现 demo
+            In order for us to reproduce and fix the problem more efficiently and conveniently, please provide a minimal demo, thank you very much.
+            为了让我们更高效方便的重现和修复问题，请提供一个最小的 demo，非常感谢。
           issue-number: ${{ github.event.issue.number }}
 
       - name: Check if labeled with "bug"
         if: ${{ github.event.label.name == 'bug' }}
         uses: peter-evans/create-or-update-comment@v3
         with:
-          body: "Thank you for reporting this issue. We will investigate and fix the issue as soon as possible."
+          body: |
+            ## The current problem will be fixed as soon as possible / 当前问题会尽快修复
+            In order for us to reproduce and fix the problem more efficiently and conveniently, please provide a minimal demo, thank you very much.
+            相关问题已尝试复现，相关问题会尽快修复，
           issue-number: ${{ github.event.issue.number }}
 
     
