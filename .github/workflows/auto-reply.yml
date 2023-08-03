@@ -19,7 +19,7 @@ jobs:
         if: ${{ github.event.label.name == 'need demo' }}
         uses: peter-evans/create-or-update-comment@v3
         with:
-          body-path: "./issue_comment_template/need_demo.md"
+          body-path: "../issue_comment_template/need_demo.md"
           issue-number: ${{ github.event.issue.number }}
 
       - name: Check if labeled with "bug"
