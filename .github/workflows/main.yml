@@ -8,17 +8,27 @@ jobs:
   add-comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if labeled with "tag1"
+      - name: Check if labeled with "need help"
+        if: ${{ github.event.label.name == 'need help' }}
         run: |
-          if [ "${{ github.event.label.name }}" != "tag1" ]; then
-            exit 0
-          fi
+          echo "Thank you for adding the 'need help' label to this issue. We will try our best to provide assistance as soon as possible."
         shell: bash
-        continue-on-error: true
         
+      - name: Check if labeled with "need demo"
+        if: ${{ github.event.label.name == 'need demo' }}
+        run: |
+          echo "Thank you for adding the 'need demo' label to this issue. We will provide a demo as soon as possible."
+        shell: bash
+
+      - name: Check if labeled with "bug"
+        if: ${{ github.event.label.name == 'bug' }}
+        run: |
+          echo "Thank you for reporting this issue. We will investigate and fix the issue as soon as possible."
+        shell: bash
+
       - name: Add comment
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Thank you for adding "tag1" to this issue!
+            Thank you for your feedback. If you have any further questions or concerns, please let us know.
