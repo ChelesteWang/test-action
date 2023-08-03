@@ -12,7 +12,10 @@ jobs:
         if: ${{ github.event.label.name == 'need help' }}
         uses: peter-evans/create-or-update-comment@v3
         with:
-          body: "Thank you for adding the 'need help' label to this issue. We will try our best to provide assistance as soon as possible."
+          body: |
+            ## Welcome to solve the current problem / 当前问题需要你的帮助
+            Welcome to solve the current problem, thank you very much.
+            欢迎来解决当前问题，不胜感激
           issue-number: ${{ github.event.issue.number }}
         
       - name: Check if labeled with "need demo"
@@ -31,8 +34,8 @@ jobs:
         with:
           body: |
             ## The current problem will be fixed as soon as possible / 当前问题会尽快修复
-            In order for us to reproduce and fix the problem more efficiently and conveniently, please provide a minimal demo, thank you very much.
-            相关问题已尝试复现，相关问题会尽快修复，
+            Related problems have been tried to reappear, and related problems will be fixed as soon as possible. Similarly, you are welcome to contribute code to fix the current problems.
+            相关问题已尝试复现，相关问题会尽快修复，同样欢迎贡献代码修复当前问题。
           issue-number: ${{ github.event.issue.number }}
 
     
