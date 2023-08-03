@@ -10,25 +10,23 @@ jobs:
     steps:
       - name: Check if labeled with "need help"
         if: ${{ github.event.label.name == 'need help' }}
-        run: |
-          echo "Thank you for adding the 'need help' label to this issue. We will try our best to provide assistance as soon as possible."
-        shell: bash
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          body: "Thank you for adding the 'need help' label to this issue. We will try our best to provide assistance as soon as possible."
+          issue-number: ${{ github.event.issue.number }}
         
       - name: Check if labeled with "need demo"
         if: ${{ github.event.label.name == 'need demo' }}
-        run: |
-          echo "Thank you for adding the 'need demo' label to this issue. We will provide a demo as soon as possible."
-        shell: bash
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          body: "Thank you for adding the 'need demo' label to this issue. We will provide a demo as soon as possible."
+          issue-number: ${{ github.event.issue.number }}
 
       - name: Check if labeled with "bug"
         if: ${{ github.event.label.name == 'bug' }}
-        run: |
-          echo "Thank you for reporting this issue. We will investigate and fix the issue as soon as possible."
-        shell: bash
-
-      - name: Add comment
         uses: peter-evans/create-or-update-comment@v3
         with:
+          body: "Thank you for reporting this issue. We will investigate and fix the issue as soon as possible."
           issue-number: ${{ github.event.issue.number }}
-          body: |
-            Thank you for your feedback. If you have any further questions or concerns, please let us know.
+
+    
