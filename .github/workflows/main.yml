@@ -19,7 +19,7 @@ jobs:
         if: ${{ github.event.label.name == 'need demo' }}
         uses: peter-evans/create-or-update-comment@v3
         with:
-          body: "Thank you for adding the 'need demo' label to this issue. We will provide a demo as soon as possible."
+          body-path: .github/workflows/issue_comment_template
           issue-number: ${{ github.event.issue.number }}
 
       - name: Check if labeled with "bug"
